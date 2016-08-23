@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Author: Daniel Hand // www.danielhand.io
+# @author: Daniel Hand
+# http://www.designsbytouch.co.uk
+# Created:   23/08/16
 
 DATE=`date +%d-%m-%Y`
 SITESTORE=/home
@@ -9,7 +11,7 @@ BACKUPPATH=/backups
 for SITE in ${SITELIST[@]};
 do
 mkdir -p $BACKUPPATH/$SITE/$DATE
-cd /home/$SITE/public_html
+cd $SITESTORE/$SITE/public_html
 sudo wp db export $BACKUPPATH/$SITE/$DATE/$SITE-$DATE.sql --allow-root
 tar -czf $BACKUPPATH/$SITE/$DATE/$SITE-$DATE.tar.gz $SITESTORE/$SITE
 sudo wp core update --allow-root
